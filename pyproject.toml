@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vivaldi-workspace-desktop-mover"
+version = "0.1.0"
+description = "Move Vivaldi browser windows to Windows virtual desktops based on workspace name"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+authors = [
+  { name = "David Brett", email = "davidbrett2002@gmail.com" }
+]
+
+dependencies = [
+  "uiautomation",
+  "pyvda"
+]
+
+keywords = [
+  "vivaldi",
+  "workspace",
+  "virtual-desktop",
+  "windows",
+  "automation"
+]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: Microsoft :: Windows",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License"
+]
+
+[project.urls]
+Homepage = "https://github.com/DavidGBrett/vivaldi-workspace-desktop-mover"
+Repository = "https://github.com/DavidGBrett/vivaldi-workspace-desktop-mover"
+Issues = "https://github.com/DavidGBrett/vivaldi-workspace-desktop-mover/issues"
+
+[project.scripts]
+vivaldi-workspace-desktop = "vivaldi_workspace_desktop_mover.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
