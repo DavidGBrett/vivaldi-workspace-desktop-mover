@@ -24,6 +24,7 @@ jobs:
 
       - name: Read version from pyproject.toml
         id: version
+        shell: bash
         run: |
           python - <<'EOF'
           import tomllib
