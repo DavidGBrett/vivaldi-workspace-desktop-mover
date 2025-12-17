@@ -5,6 +5,7 @@ from .vivaldi_window import get_all_vivaldi_windows
 
 def move_vivaldi_windows(config: Config):
 
+    # Get all vivaldi windows, skipping over those that a parsing error
     vivaldi_windows = get_all_vivaldi_windows(ignore_failed_parses=True)
 
     succesful_moves = 0
@@ -17,6 +18,7 @@ def move_vivaldi_windows(config: Config):
             continue
         assert(window.workspace_name != None)
 
+        # Get name of mapped desktop
         if config.workspace_to_desktop:
             target_desktop_name = config.workspace_to_desktop(window.workspace_name)
 
@@ -25,8 +27,11 @@ def move_vivaldi_windows(config: Config):
         
         else:
             target_desktop_name = window.workspace_name
-            
+        
+        # Attempt to find the mapped desktop
         target_desktop = get_desktop_by_name(target_desktop_name)
+
+        # See if we can and should create a new desktop if it is missing
         if target_desktop == None:
             if config.create_missing_desktops == False:
                 print(f"Mapped virtual desktop {target_desktop_name} is missing, and configuration is set to not create new virtual desktops.")
@@ -37,9 +42,12 @@ def move_vivaldi_windows(config: Config):
             except NotImplementedError:
                 print(f"Mapped virtual desktop {target_desktop_name} is missing and cannot be created programmtically on this version of Windows!")
                 continue
-
+        
+        # If all went well - move the window to its mapped virtual desktop
         move_window_to_desktop(window.window_handle,target_desktop)
         print(f"Moved window to desktop '{target_desktop_name}'.")
+
+        # count how many of these windows we successfully moved to their mapped desktop
         succesful_moves += 1
 
     print("\n"+"-"*10)
