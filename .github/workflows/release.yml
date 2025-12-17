@@ -55,7 +55,7 @@ jobs:
         run: python -m build
 
       - name: Build standalone EXE
-        run: pyinstaller --onefile --name VivaldiWorkspaceDesktop-v${{steps.version.outputs.version}} -m vivaldi_workspace_desktop_mover
+        run: pyinstaller --onefile --name VivaldiWorkspaceDesktop-v${{steps.version.outputs.version}} --module vivaldi_workspace_desktop_mover
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
