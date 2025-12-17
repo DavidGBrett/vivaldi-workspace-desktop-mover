@@ -28,6 +28,10 @@ def move_vivaldi_windows(config: Config):
             
         target_desktop = get_desktop_by_name(target_desktop_name)
         if target_desktop == None:
+            if config.create_missing_desktops == False:
+                print(f"Mapped virtual desktop {target_desktop_name} is missing, and configuration is set to not create new virtual desktops.")
+                continue
+
             try:
                 target_desktop = create_desktop(name=target_desktop_name)
             except NotImplementedError:
