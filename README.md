@@ -19,7 +19,7 @@ Important Information
 
 - This tool only moves windows open on the current desktop - so be sure to run it where all your vivaldi windows are!
   
-- By defualt this tool will look for virtual desktops with the same name as the window's workspace, and will create new virtual desktops if it cant find a match - if you wish to change this see the [command-line arguments section](#Command-line%20arguments).
+- By defualt this tool will look for virtual desktops with the same name as the window's workspace, and will create new virtual desktops if it cant find a match - if you wish to change this see the [command-line arguments section](#command-line-arguments).
 
 Installation and Usage
 ----------------------
