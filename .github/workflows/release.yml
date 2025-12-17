@@ -1,9 +1,6 @@
 name: Build and Release
 
 on:
-  push:
-    tags:
-      - "v*"
   workflow_dispatch:
 
 jobs:
@@ -25,15 +22,30 @@ jobs:
           pip install build pyinstaller
           pip install .
 
+      - name: Read version from pyproject.toml
+        id: version
+        run: |
+          python - <<'EOF'
+          import tomllib
+          with open("pyproject.toml", "rb") as f:
+              data = tomllib.load(f)
+          print(f"version={data['project']['version']}")
+          EOF
+      
+      - name: Print version
+        run: echo "Version is ${{ steps.version.outputs.version }}"
+
       - name: Build wheel
         run: python -m build
 
       - name: Build standalone EXE
-        run: pyinstaller --onefile --name VivaldiWorkspaceDesktop src/vivaldi_workspace_desktop_mover/cli.py
+        run: pyinstaller --onefile --name VivaldiWorkspaceDesktop-v${{steps.version.outputs.version}} src/vivaldi_workspace_desktop_mover/cli.py
 
       - name: Upload release assets
+        if: success()
         uses: softprops/action-gh-release@v2
         with:
           files: |
             dist/*.whl
             dist/*.exe
+          tag_name: "v${{steps.version.outputs.version}}"
