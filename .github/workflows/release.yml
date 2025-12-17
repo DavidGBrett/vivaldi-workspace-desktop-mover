@@ -62,7 +62,6 @@ jobs:
         run: pyinstaller --onefile --name VivaldiWorkspaceDesktop-v${{steps.version.outputs.version}} -m vivaldi_workspace_desktop_mover
 
       - name: Upload release assets
-        if: success()
         uses: softprops/action-gh-release@v2
         with:
           files: |
