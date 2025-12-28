@@ -8,7 +8,7 @@ version = "1.0.0"
 description = "Move Vivaldi browser windows to Windows virtual desktops based on workspace name"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
+license = { file = "LICENSE" }
 
 authors = [
   { name = "David Brett", email = "davidbrett2002@gmail.com" }
