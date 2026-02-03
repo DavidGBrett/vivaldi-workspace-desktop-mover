@@ -1,13 +1,13 @@
 name: Build and Release
 
-permissions:
-  contents: write
-
 on:
   workflow_dispatch:
 
 jobs:
   build:
+    permissions:
+      contents: write
+
     runs-on: windows-latest
 
     steps:
@@ -56,8 +56,33 @@ jobs:
 
       - name: Build standalone EXE
         run: pyinstaller --onefile --name VivaldiWorkspaceDesktop-v${{steps.version.outputs.version}} src/vivaldi_workspace_desktop_mover/__main__.py
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: dist/
 
-      - name: Upload release assets
+
+  release:
+    needs: build
+
+    permissions:
+      id-token: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-files
+          path: dist/
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+      - name: Create Github release
         uses: softprops/action-gh-release@v2
         with:
           files: |
