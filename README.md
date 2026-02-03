@@ -26,7 +26,7 @@ Installation and Usage
 
 ### Executable
 1. Go to the latest release : https://github.com/DavidGBrett/vivaldi-workspace-desktop-mover/releases/latest
-2. Download the `.exe` file, e.g. `VivaldiWorkspaceDesktop-v1.0.0.exe`
+2. Download the `.exe` file, e.g. `VivaldiWorkspaceDesktop-v1.0.1.exe`
 3. Go to the virtual desktop which has the unsorted vivaldi windows.
 4. Double click on the exe or launch it from the terminal.
 
