@@ -42,7 +42,7 @@ Installation and Usage
 
 ### Python Wheel
 1. Go to the latest release : https://github.com/DavidGBrett/vivaldi-workspace-desktop-mover/releases/latest
-2. Download the `.whl` file e.g. `vivaldi_workspace_desktop_mover-1.0.0-py3-none-any.whl`
+2. Download the `.whl` file e.g. `vivaldi_workspace_desktop_mover-1.0.1-py3-none-any.whl`
 3. Install the wheel:
      ```
      pip install C:\path\to\vivaldi_workspace_desktop_mover‑X.Y.Z‑py3-none-any.whl
