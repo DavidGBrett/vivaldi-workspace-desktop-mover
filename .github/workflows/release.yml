@@ -7,6 +7,9 @@ jobs:
   build:
     runs-on: windows-latest
 
+    outputs: 
+      version: ${{ steps.version.outputs.version }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -92,4 +95,4 @@ jobs:
           files: |
             dist/*.whl
             exe/*.exe
-          tag_name: "v${{steps.version.outputs.version}}"
+          tag_name: "v${{needs.build.outputs.version}}"
