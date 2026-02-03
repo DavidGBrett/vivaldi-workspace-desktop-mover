@@ -30,6 +30,16 @@ Installation and Usage
 3. Go to the virtual desktop which has the unsorted vivaldi windows.
 4. Double click on the exe or launch it from the terminal.
 
+### Pip Install from PyPI
+1. Install using pip: 
+    ```bash
+    pip install vivaldi-workspace-desktop-mover
+    ```
+2. Run as a module: 
+    ```bash
+    python -m vivaldi_workspace_desktop_mover
+    ```
+
 ### Python Wheel
 1. Go to the latest release : https://github.com/DavidGBrett/vivaldi-workspace-desktop-mover/releases/latest
 2. Download the `.whl` file e.g. `vivaldi_workspace_desktop_mover-1.0.0-py3-none-any.whl`
