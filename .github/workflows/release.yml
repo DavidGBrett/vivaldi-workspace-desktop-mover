@@ -5,9 +5,6 @@ on:
 
 jobs:
   build:
-    permissions:
-      contents: write
-
     runs-on: windows-latest
 
     steps:
@@ -74,6 +71,8 @@ jobs:
 
     permissions:
       id-token: write
+      contents: write
+
 
     runs-on: ubuntu-latest
 
